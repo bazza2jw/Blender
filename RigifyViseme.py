@@ -236,7 +236,7 @@ def add_properties():
     bpy.types.Scene.scaleVisime =  bpy.props.FloatProperty(
         name="scaleVisime",
         description="Action Scaling",
-        default=0.1
+        default=0.01
     )
     
    

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource xmlns="http://www.wxwidgets.org/wxxrc">
+  <!-- Handler Generation is ON -->
+  <object class="wxBitmap" name="media-playback-stop">Icons/media-playback-stop.png</object>
+  <object class="wxBitmap" name="media-record">Icons/media-record.png</object>
+  <object class="wxBitmap" name="package-installed-updated">Icons/package-installed-updated.png</object>
+  <object class="wxBitmap" name="package-purge">Icons/package-purge.png</object>
+  <object class="wxBitmap" name="system-shutdown-restart-panel">Icons/system-shutdown-restart-panel.png</object>
+</resource>

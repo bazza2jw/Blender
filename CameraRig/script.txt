@@ -1,0 +1,201 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   Low Cost Camera Motion Controller                
+                             For Under £100                         
+                               Barry Hill
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                           
+
+    2024-07-22
+    (c) 2024 B. J. Hill - Licence CC0
+
+    ________________________________________________________________
+    INTRODUCTION
+
+                                   ME                               
+                                   -                                
+                   When making films, using virtual sets
+                   combined with green screen footage is
+                   fairly routine. We all like to put
+                   ourselves in unusual settings.
+
+                                   ME                               
+                   The challenge when combining the
+                   Computer Graphics  footage with the
+                   live footage is getting the two
+                   cameras, the CG scene camera and the
+                   real camera to agree.
+
+                                   ME                               
+                                   -                                
+                   If the camera is fixed then the scene
+                   geometry, in principle is known, and so
+                   the two can be matched. If the camera
+                   is moving then motion tracking can be
+                   used to match a scene camera to the
+                   real camera. This is a complex process
+                   time consuming and or expensive process
+
+                                   ME                               
+                                   -                                
+                   However the CG scene camera always
+                   knows exactly where it is and where it
+                   is pointing. If the scene camera could
+                   control the real camera then the two
+                   cameras could be made to match
+                   automatically, in principle.
+
+                                   ME                               
+                                   -                                
+                   This requires the use of a camera
+                   motion controller (CMC) linked to the
+                   CG scene camera. The CG and live
+                   footage can be combined using, for
+                   example, OBS studio to give a real time
+                   draft quality result.
+
+                                   ME                               
+                                   -                                
+                   CMCs are available but they cost many
+                   thousands of pounds/dollars/euros. The
+                   question is, can a usefully working CMC
+                   be made for say £100 rather than
+                   £20,000?
+
+                                   ME                               
+                                   -                                
+                   The answer is yes. A CMC is very
+                   similar in operation to a CNC machine.
+                   The parts for CNC machines are readily
+                   available and are inexpensive or even
+                   free if you can find a unit to salvage.
+
+                                   ME                               
+                                   .                                
+                   It is easy to write a Blender plugin to
+                   control the CMC using the scene camera.
+
+                                   ME                               
+                                   -                                
+                   The design here uses the frame from a
+                   salvaged gazebo the parts from a
+                   salvaged 3D printer, plus about £100 of
+                   other parts. Even if the all the parts
+                   are bought new the cost should be under
+                   £200.
+
+                                   ME                               
+                                   -                                
+                   3D printed parts are used. The design
+                   files are in the Github repository,
+                   link in the description. These designs
+                   may have to be adapted. It will take
+                   about a week to print all the parts.
+
+                                   ME                               
+                                   -                                
+                   This is not a complex project but does
+                   need good knowledge of 3D printing and
+                   basic electronics and software.
+
+    THE BUILD
+
+                                   ME                               
+                                   -                                
+                   This is the built CMC. It is about 2m
+                   square, with movement in the vertical
+                   and horizontal as well as pan and tilt.
+
+    CNC controllers operate the stepper motors. There is one CNC
+    controller for the position and one CNC controller for the Pan-
+    Tilt. The CNC controller is based on an Arduino
+
+    I used cable ties to join parts together, simpler and avoids
+    breaking the printed parts.
+
+                                   ME                               
+                                   -                                
+                   The 3D printed unions join the frame
+                   together. The frame can be glued or
+                   screwed together, depending on
+                   requirements. If the unit will remain
+                   in a studio then glueing may be best.
+                   Or a combination of the two.
+
+                                   ME                               
+                                   -                                
+                   The timing belts must be correctly
+                   tensioned. And the horizontal section
+                   must be level.
+
+                                   ME                               
+                                   -                                
+                   The camera is moved up and down with
+                   stepper motors at each end. The counter
+                   weights must chosen to give an
+                   effective zero weight to the horizontal
+                   bar, plus camera.
+
+    SUMMARY
+
+                                   ME                               
+                                   -                                
+                   This is a simple low cost means to
+                   simplify the use of virtual sets. This
+                   rig acts as a programmable cameraman,
+                   always ready and obeys instructions
+                   exactly over and over again.
+
+
+                                   ME                               
+                                   -                                
+                   Let me know in the comments below how
+                   you get on. I will do further videos on
+                   how to set up and use. Links to the
+                   design and software files are in the
+                   description below. Thank you for
+                   watching. Till next time.

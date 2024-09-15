@@ -1,8 +1,8 @@
 These are the files to build a low cost camera motion controller.
 
-The blend files are the designs of the parts. Differnet versions are included. These are better thought of as a set of guidelines and suggestions rather than a step wise build process.
+The blend files are the designs of the parts. Different versions are included. These are better thought of as a set of guidelines and suggestions rather than a step wise build process.
 
-This is because different tubing and 
+The blend files may have several scenes with alternative designs.
 
 The design uses:
 

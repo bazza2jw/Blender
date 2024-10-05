@@ -4,20 +4,27 @@ The blend files are the designs of the parts. Different versions are included. T
 
 The blend files may have several scenes with alternative designs.
 
+RigPartsFinal.blend has the set of parts used in the rig shown in the video. Use this to generate the STL for printing
+
 The design uses:
 
 Tubing. Recycled cheap gazebo or tent poles.
-Stepper motors - NEMA 17 seem to work OK.
+Stepper motors - NEMA 17 seem to work OK for positioning. 28BYJ-48 stepper motors are used with the pan/tilt
 Arduino Uno pluc CNC sheild and stepper motor drivers
+
 Timing belt, about 10m.
+
 3D Printed parts. About 2kg of filiment may be needed. Most parts can be printed "course". The gears need to be printed "fine" resolution.
-An ATX PSU (salvage from old PC)
+
+An ATX PSU (salvage from old PC). The rig has peak current draw of several amps at 12V,
 
 Software
 
-The Ardunio source CMController runs the camera motion controller. The PanTilt runs the servo based pan-tilt.
+The Ardunio source CMController runs the camera motion controller. 
 
-The software has a simple terminal interface.
+The PanTilt runs the servo based pan-tilt.
+
+The software has a simple serial terminal interface.
 
 
 Acknowledgements

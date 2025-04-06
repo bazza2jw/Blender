@@ -27,15 +27,13 @@ bl_info = {
 
 # input buffer
 buff = ""
-serialPort = None
+positionSerialPort = None
+panSerialPort = None
+
 _last_X = -1000
 _last_Z = -1000
-# what zero is - enter into the panel 
-_zeroX = 12
-_zeroZ = 12
-# calibration between pan tilt and stepper
-_unitsPerDegreeX = 0.2
-_unitsPerDegreeZ = 0.2
+
+
 
 # periodic function
 def handle_data():
@@ -50,18 +48,17 @@ def handle_data():
         next_X = 30
     if next_X < -30:
         next_X = -30
-    next_X = next_X * _unitsPerDegreeX + _zeroX
+   
     
     next_Z = rot[2] * 57.296
     if next_Z > 30:
         next_Z = 30
     if next_Z < -30:
         next_Z = -30
-    next_Z = _zeroZ - next_Z  * _unitsPerDegreeZ     
     
     try:
         if serialPort is not None:
-                b = "G0 X%f Y%f\r" % (next_X, next_Z)
+                b = "G %f 0 %f\r" % (next_X, next_Z)
                 serialPort.write(b.encode())    
                 _last_Z = next_Z
                 _last_X = next_X
@@ -81,9 +78,7 @@ class CameraControlHomeOperator(bpy.types.Operator):
         # close if open
         try:
             if serialPort is not None:
-                b = "G28 X\r"
-                serialPort.write(b.encode())
-                b = "G28 Y\r"
+                b = "H\r"
                 serialPort.write(b.encode())
                 
         except Exception as e:
@@ -98,7 +93,7 @@ class CameraControlZeroOperator(bpy.types.Operator):
     def execute(self, context):
         try:
             if serialPort is not None:
-                b = "G0 X%f Y%f\r" % (context.scene.zeroX,context.scene.zeroZ)
+                b = "C\r" 
                 serialPort.write(b.encode())
         except Exception as e:
             print(e)
@@ -116,12 +111,14 @@ class CameraControlConnectOperator(bpy.types.Operator):
         # close if open
         try:
              print(context.scene.serialPort)
-             global serialPort 
-             serialPort =  serial.Serial(context.scene.serialPort,250000)
-             if serialPort is None:
+             global positionSerialPort 
+             global panSerialPort
+             
+             positionSerialPort =  serial.Serial(context.scene.positionSerialPort,115200)
+             panSerialPort =  serial.Serial(context.scene.panSerialPort,115200)
+             
+             if (positionSerialPort is None) or (panSerialPort is None):
                 print("Failed to connect");
-                b = "G90\r"
-                serialPort.write(b.encode())
              else:
                  print("Connected")     
         except Exception as e:
@@ -145,26 +142,16 @@ class CameraControlPanel(bpy.types.Panel):
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     
-    ipaddress: bpy.props.StringProperty(
-        name="serialPort",
-        description="Serial Port",
-        default="/dev/ttyUSB0",
-    )
+   
     def draw(self, context):
         layout = self.layout
         row = layout.row()
         row.prop_search(context.scene, "cameratrack", context.scene,"objects", text="Camera")
         #
         row = layout.row()
-        row.prop(context.scene,"serialPort")
+        row.prop(context.scene,"positionSerialPort")
         row = layout.row()
-        row.prop(context.scene,"zeroX")
-        row = layout.row()
-        row.prop(context.scene,"zeroZ")
-        row = layout.row()
-        row.prop(context.scene,"unitsPerDegreeX")
-        row = layout.row()
-        row.prop(context.scene,"unitsPerDegreeZ")
+        row.prop(context.scene,"panSerialPort")
         #
         row = layout.row()
         row.operator('cc.control_connect', text='Connect')
@@ -179,47 +166,16 @@ def add_properties():
         description="Camera To Control",
         default="Camera",
     )
-    bpy.types.Scene.serialPort =  bpy.props.StringProperty(
-        name="SerialPort",
+    bpy.types.Scene.serialPortPosition =  bpy.props.StringProperty(
+        name="positionSerialPort",
+        description="Serial Port For Position",
+        default="/dev/ttyUSB1",
+    )
+    
+    bpy.types.Scene.serialPortPanTilt =  bpy.props.StringProperty(
+        name="panSerialPort",
         description="Serial Port For Pan Tilt Access",
         default="/dev/ttyUSB0",
-    )
-    bpy.types.Scene.zeroX =  bpy.props.FloatProperty(
-        name="ZeroX",
-        description="Horizontal Position",
-        default=12.0,
-        min= 0.0,
-        max=30.0,
-        soft_min = 0.0,
-        soft_max = 30.0
-    )
-    bpy.types.Scene.zeroZ =  bpy.props.FloatProperty(
-        name="ZeroZ",
-        description="Pan Centre",
-        default=12.0,
-        min= 0.0,
-        max=30.0,
-        soft_min = 0.0,
-        soft_max = 30.0
-    )
-
-    bpy.types.Scene.unitsPerDegreeX =  bpy.props.FloatProperty(
-        name="unitsPerDegreeX",
-        description="Pan Centre",
-        default=0.1,
-        min= 0.0,
-        max=1.0,
-        soft_min = 0.0,
-        soft_max = 1.0
-    )
-    bpy.types.Scene.unitsPerDegreeZ =  bpy.props.FloatProperty(
-        name="unitsPerDegreeZ",
-        description="Pan Centre",
-        default=0.1,
-        min= 0.0,
-        max=1.0,
-        soft_min = 0.0,
-        soft_max = 1.0
     )
 
     
@@ -227,11 +183,9 @@ def add_properties():
 
 def remove_properties():
     del bpy.types.Scene.cameratrack
-    del bpy.types.Scene.serialPort
-    del bpy.types.Scene.zeroX
-    del bpy.types.Scene.zeroZ
-    del bpy.types.Scene.unitsPerDegreeX
-    del bpy.types.Scene.unitsPerDegreeZ
+    del bpy.types.Scene.serialPortPosition
+    del bpy.types.Scene.serialPortPanTilt
+    
     
 
 

@@ -71,10 +71,10 @@ class SwitchOnIK(bpy.types.Operator):
 
     def execute(self, context):
         if bpy.context.active_object.type == 'ARMATURE':
-            bpy.context.active_object.pose.bones["thigh_parent.R"]["FK_limb_follow"] = 0
-            bpy.context.active_object.pose.bones["thigh_parent.L"]["FK_limb_follow"] = 0
-            bpy.context.active_object.pose.bones["upper_arm_parent.L"]["FK_limb_follow"] = 0
-            bpy.context.active_object.pose.bones["upper_arm_parent.R"]["FK_limb_follow"] = 0
+            bpy.context.active_object.pose.bones["thigh_parent.R"]["FK.Limb_follow"] = 0
+            bpy.context.active_object.pose.bones["thigh_parent.L"]["FK.Limb_follow"] = 0
+            bpy.context.active_object.pose.bones["upper_arm_parent.L"]["FK.Limb_follow"] = 0
+            bpy.context.active_object.pose.bones["upper_arm_parent.R"]["FK.Limb_follow"] = 0
             bpy.context.active_object.pose.bones["upper_arm_parent.L"]["IK_Stretch"]=1
             bpy.context.active_object.pose.bones["upper_arm_parent.L"]["IK_FK"] = 0
             bpy.context.active_object.pose.bones["upper_arm_parent.R"]["IK_Stretch"]=1

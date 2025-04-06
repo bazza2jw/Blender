@@ -11,3 +11,10 @@ RigifyFKIKSwitch.py - adds a panel to quickly switch between IK and FK, Also but
 RigifyViseme.py - A script to load Moho visemes to an action for Makehuman 2 Rigify rig.
 HGRigifyViseme.py - A script to load Moho visemes to an action for Human Generator Rigify rig.
 cameraChange.py - A script to render on camera change (name, location, rotation, lens).Use this to control render layers when there are multiple cameras.
+
+Workflows - a set of single task ComfyUI workflows
+
+resequenceAndLinkFilenames - this creates a set of symbolic links to a directory of files. The symbolic links are a continuous sequence. Use this to create a set of filenames for piping into ComfyUI without loseing the orginal sequence. For example a character rendered to a view layer that is then piped through ComfyUI for lipsync.
+
+resequenceFilenames - this renames the given files into a continous numbered sequence.
+

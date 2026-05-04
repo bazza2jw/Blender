@@ -1,20 +1,27 @@
-# Blender
-A collection of files for use with Blender
+# Mixamo Pose to Animation Addon
 
-Comments in the code files should say what they are useful for and how to use.
+A Blender addon that sets Mixamo rigs to a relaxed A-pose to match Human Generator rigs for easy retargeting.
 
-faceRig.py - import MoHo / Rubarb lipsync to an NLA track that can then be processed
-generateMatte.py - auto rotoscope
-CameraControlGCODE.py - maps a real camera on a GCODE controlled pan-tilt to the scene camera
-CameraControl.py  & panTiltControl.ino - maps a real camera on a servo controlled pan-tilt to a scene camera via an Arduino 
-RigifyFKIKSwitch.py - adds a panel to quickly switch between IK and FK, Also buttons for pose and object mode for easy switch, especially when using a tablet.
-RigifyViseme.py - A script to load Moho visemes to an action for Makehuman 2 Rigify rig.
-HGRigifyViseme.py - A script to load Moho visemes to an action for Human Generator Rigify rig.
-cameraChange.py - A script to render on camera change (name, location, rotation, lens).Use this to control render layers when there are multiple cameras.
+## What it does
+- Applies a predefined relaxed A-pose to Mixamo armatures
+- Optionally preserves existing animations by shifting keyframes
+- Makes Mixamo animations compatible with Human Generator rigs
+- One-click operation with UI panel
 
-Workflows - a set of single task ComfyUI workflows
+## Installation
+1. Download `mixamo_pose_addon.py`
+2. Open Blender → Edit → Preferences → Add-ons
+3. Click "Install" and select the file
+4. Enable "Animation: Mixamo Pose to Animation"
 
-resequenceAndLinkFilenames - this creates a set of symbolic links to a directory of files. The symbolic links are a continuous sequence. Use this to create a set of filenames for piping into ComfyUI without loseing the orginal sequence. For example a character rendered to a view layer that is then piped through ComfyUI for lipsync.
+## Usage
+1. Select your Mixamo armature
+2. Open sidebar (press N) → "Mixamo Pose" tab
+3. Check "Preserve Animation" if you want to keep existing keyframes
+4. Click "Apply Pose"
 
-resequenceFilenames - this renames the given files into a continous numbered sequence.
+## Files
+- `mixamo_pose_addon.py` - The addon
+- `README.md` - This file
 
+That's it! Your Mixamo animations will now work perfectly with Human Generator rigs. 
